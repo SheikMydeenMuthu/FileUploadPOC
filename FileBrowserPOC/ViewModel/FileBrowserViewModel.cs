@@ -74,7 +74,7 @@ namespace FileBrowserPOC.ViewModel
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                fileTypes = new string[] { "application/pdf", "application/msword"};//Image "image/jpeg"
+                fileTypes = new string[] { "application/pdf", "application/msword", "text/rtf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };//Image "image/jpeg"
             }
 
             if (Device.RuntimePlatform == Device.iOS)
