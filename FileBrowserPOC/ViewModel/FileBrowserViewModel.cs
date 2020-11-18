@@ -3,6 +3,8 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Plugin.FilePicker;
 using System.IO;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace FileBrowserPOC.ViewModel
 {
@@ -43,7 +45,21 @@ namespace FileBrowserPOC.ViewModel
                 });
             }
         }
-        private async System.Threading.Tasks.Task BrowseFileAsync()
+
+        private Command _btnEssentialClickCommand{get;set;}
+
+        public Command btnEssentialClickCommand
+        {
+            get
+            {
+                return _btnClickCommand ?? new Command(async () =>
+                {
+                    await PicktheFileUsingEssential();
+                });
+            }
+        }
+
+        private async Task BrowseFileAsync()
         {
             //var file = await CrossFilePicker.Current.PickFile();
 
@@ -64,11 +80,28 @@ namespace FileBrowserPOC.ViewModel
                         FileName = "Not Selected";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
+
+        internal async Task PicktheFileUsingEssential()
+        {
+            try
+            {
+                var pickItem = await FilePicker.PickAsync(new PickOptions
+                {
+                    FileTypes = FilePickerFileType.Images,
+                    PickerTitle = "Select the file"
+                });
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         internal string[] GetFileTypeBasedOnPlatform()
         {
 

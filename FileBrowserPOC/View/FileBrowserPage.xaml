@@ -13,7 +13,11 @@
 
         <Button Text="Browse"
                 Command="{Binding btnClickCommand}"
-                Grid.ColumnSpan="2"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+            <Button Text="Browse using Essential"
+                Command="{Binding btnEssentialClickCommand}"
+                Grid.Column="1"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
         <Label Grid.Row="1"
