@@ -28,7 +28,7 @@ namespace FileBrowserPOC.ViewModel
             get { return fileName; }
             set
             {
-                fileName = value; 
+                fileName = value;
                 OnPropertyChanged("FileName");
             }
         }
